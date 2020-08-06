@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'VelocityRaptorUI_Example' do
+  pod 'VelocityRaptorUI', :path => '../'
+
+  target 'VelocityRaptorUI_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
