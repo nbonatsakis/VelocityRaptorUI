@@ -1,0 +1,6 @@
+framework module Pods_VelocityRaptorUI_Tests {
+  umbrella header "Pods-VelocityRaptorUI_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

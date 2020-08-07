@@ -1,0 +1,6 @@
+framework module VelocityRaptorUI {
+  umbrella header "VelocityRaptorUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

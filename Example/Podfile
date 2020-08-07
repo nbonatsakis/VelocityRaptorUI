@@ -1,4 +1,7 @@
+platform :ios, '13.0'
 use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
+source 'git@github.com:nbonatsakis/VelocityRaptorSpecs.git'
 
 target 'VelocityRaptorUI_Example' do
   pod 'VelocityRaptorUI', :path => '../'

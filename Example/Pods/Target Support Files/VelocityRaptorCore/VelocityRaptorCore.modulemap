@@ -1,0 +1,6 @@
+framework module VelocityRaptorCore {
+  umbrella header "VelocityRaptorCore-umbrella.h"
+
+  export *
+  module * { export * }
+}
