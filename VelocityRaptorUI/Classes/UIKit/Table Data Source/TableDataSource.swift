@@ -9,14 +9,14 @@
 import UIKit
 import Reusable
 
-struct TableSection: Hashable {
+public struct TableSection: Hashable {
 
-    let identifier: AnyHashable
-    let header: String?
-    let footer: String?
-    let rows: [AnyTableRow]
+    public let identifier: AnyHashable
+    public let header: String?
+    public let footer: String?
+    public let rows: [AnyTableRow]
 
-    init(
+    public init(
         identifier: AnyHashable,
         header: String? = nil,
         footer: String? = nil,
@@ -28,17 +28,17 @@ struct TableSection: Hashable {
         self.footer = footer
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         identifier.hash(into: &hasher)
     }
 
 }
 
-class TableDataSource: UITableViewDiffableDataSource<TableSection, AnyTableRow> {
+public class TableDataSource: UITableViewDiffableDataSource<TableSection, AnyTableRow> {
 
     // MARK: Config
 
-    static func configure(with tableView: UITableView) -> TableDataSource {
+    public static func configure(with tableView: UITableView) -> TableDataSource {
         let ds = TableDataSource(
             tableView: tableView,
             cellProvider: { (tableView, indexPath, row) -> UITableViewCell? in
@@ -50,22 +50,22 @@ class TableDataSource: UITableViewDiffableDataSource<TableSection, AnyTableRow> 
 
     // MARK: Data
 
-    var sections: [TableSection] = []
+    public var sections: [TableSection] = []
 
-    subscript(indexPath: IndexPath) -> AnyTableRow {
+    public subscript(indexPath: IndexPath) -> AnyTableRow {
         return sections[indexPath.section].rows[indexPath.row]
     }
 
-    var isEmpty: Bool {
+    public var isEmpty: Bool {
         return sections.first(where: {!$0.rows.isEmpty}) == nil
     }
 
-    func setRows(_ rows: [AnyTableRow]?, animated: Bool = true) {
+    public func setRows(_ rows: [AnyTableRow]?, animated: Bool = true) {
         let section = TableSection(identifier: "defaultSection", rows: rows ?? [])
         setSections([section], animated: animated)
     }
 
-    func setSections(_ sections: [TableSection]?, animated: Bool = true) {
+    public func setSections(_ sections: [TableSection]?, animated: Bool = true) {
         self.sections = sections ?? []
 
         var snapshot = NSDiffableDataSourceSnapshot<TableSection, AnyTableRow>()
@@ -82,11 +82,11 @@ class TableDataSource: UITableViewDiffableDataSource<TableSection, AnyTableRow> 
 
     // MARK: Data Source Overrides
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].header
     }
 
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    public override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return sections[section].footer
     }
 

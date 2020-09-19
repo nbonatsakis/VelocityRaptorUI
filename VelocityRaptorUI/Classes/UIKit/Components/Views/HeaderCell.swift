@@ -74,7 +74,7 @@ public struct HeaderViewModel: Equatable, TableViewCellRepresentable {
         self.image = image
     }
 
-    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+    public func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: HeaderCell.self)
         cell.viewModel = self
         return cell

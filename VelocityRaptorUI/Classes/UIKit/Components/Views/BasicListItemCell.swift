@@ -89,7 +89,7 @@ public struct BasicListItemViewModel: Hashable, TableViewCellRepresentable {
         hasher.combine(text)
     }
 
-    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+    public func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: BasicListItemCell.self)
         cell.viewModel = self
         return cell

@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol TableViewCellRepresentable: Hashable {
+public protocol TableViewCellRepresentable: Hashable {
 
     func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
 
 }
 
-extension TableViewCellRepresentable {
+public extension TableViewCellRepresentable {
 
     var anyRow: AnyTableRow {
         return AnyTableRow(self)
@@ -22,29 +22,29 @@ extension TableViewCellRepresentable {
 
 }
 
-struct AnyTableRow: TableViewCellRepresentable {
+public struct AnyTableRow: TableViewCellRepresentable {
 
     private let _cellForIndex: (UITableView, IndexPath) -> UITableViewCell
     private let _equals: (Any) -> Bool
     private let _hashInto: (inout Hasher) -> Void
     let value: Any
 
-    init<T: TableViewCellRepresentable> (_ value: T) {
+    public init<T: TableViewCellRepresentable> (_ value: T) {
         _cellForIndex = value.cell.self
         _equals = { ($0 as? T == value) }
         _hashInto = { value.hash(into: &$0) }
         self.value = value
     }
 
-    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+    public func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         return _cellForIndex(tableView, indexPath)
     }
 
-    static func == (lhs: AnyTableRow, rhs: AnyTableRow) -> Bool {
+    public static func == (lhs: AnyTableRow, rhs: AnyTableRow) -> Bool {
         return lhs._equals(rhs.value)
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         _hashInto(&hasher)
     }
 

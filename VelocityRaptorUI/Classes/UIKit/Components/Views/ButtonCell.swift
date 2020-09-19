@@ -88,7 +88,7 @@ public struct ButtonViewModel: TableViewCellRepresentable {
         self.isPrimary = isPrimary
     }
 
-    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+    public func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: ButtonCell.self)
         cell.viewModel = self
         return cell
