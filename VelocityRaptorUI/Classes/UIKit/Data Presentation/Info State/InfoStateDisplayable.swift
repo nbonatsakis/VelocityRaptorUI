@@ -9,20 +9,20 @@
 import UIKit
 import Anchorage
 
-protocol InfoStateDisplayable {
+public protocol InfoStateDisplayable {
 
     var viewForEmptyState: UIView { get }
 
 }
 
-protocol EmptyStateDisplayable: InfoStateDisplayable {
+public protocol EmptyStateDisplayable: InfoStateDisplayable {
 
     var emptyState: InfoState { get }
     var dataSource: TableDataSource! { get }
 
 }
 
-extension EmptyStateDisplayable where Self: UIViewController {
+public extension EmptyStateDisplayable where Self: UIViewController {
 
     var viewForEmptyState: UIView {
         return self.view
@@ -39,7 +39,7 @@ extension EmptyStateDisplayable where Self: UIViewController {
 
 }
 
-extension InfoStateDisplayable where Self: UIViewController {
+public extension InfoStateDisplayable where Self: UIViewController {
 
     var viewForEmptyState: UIView {
         return self.view
@@ -103,7 +103,7 @@ extension InfoStateDisplayable where Self: UIViewController {
 
 }
 
-class InfoStateView: UIView {
+public class InfoStateView: UIView {
 
     let contentView: InfoStateContentView
 
